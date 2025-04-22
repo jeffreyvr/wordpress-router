@@ -101,7 +101,7 @@ class RouterBase implements Routable
      * @param Request $request
      * @return Response|bool returns false only if we don't matched anything
      */
-    public function match(Request $request = null)
+    public function match(Request|null $request = null)
     {
         if (!isset($request)) {
             $request = Request::createFromGlobals();
@@ -148,7 +148,7 @@ class RouterBase implements Routable
         try {
             return $this->altoRouter->generate($name, $params);
         } catch (Exception $e) {
-            throw new NamedRouteNotFoundException($name, null);
+            throw new NamedRouteNotFoundException($name);
         }
     }
 

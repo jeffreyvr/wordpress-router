@@ -23,28 +23,28 @@ class RouteParams implements Iterator
         return $this->params[$key];
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
 
-    public function current()
+    public function current(): mixed
     {
         return $this->params[$this->key()];
     }
 
-    public function key()
+    public function key(): mixed
     {
         $keys = array_keys($this->params);
         return $keys[$this->position];
     }
 
-    public function next()
+    public function next(): void
     {
         $this->position++;
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return $this->position < count($this->params);
     }
